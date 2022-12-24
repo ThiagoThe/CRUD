@@ -4,31 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Novo Cadastro</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <meta charset="utf-8" />
+    <title>CRUD de Clientes</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/cyborg/bootstrap.min.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Preencha os dados abaixo para salvar o cliente</p>
-    <form action="<%= action %>" method="POST">
-      <p>
-        <label> Nome: <input type="text" name="nome" value="<%=doc.nome%>"/></label>
-      </p>
-      <p>
-        <label> Idade <input type="number" name="idade" value="<%=doc.idade%>" /> </label>
-      </p>
-      <p>
-        <label>
-          UF:
-          <select name="uf"><% const s = "selected" %>
-            <option <% if(doc.uf === "RS"){%><%=s %><%}%>>RS</option>
-            <option <% if(doc.uf === "SC"){%><%=s %><%}%>>SC</option>
-            <option <% if(doc.uf === "PR"){%><%=s %><%}%>>PR</option>
-          </select>
-        </label>
-      </p>
-      <p><a href="/">Cancelar</a> | <input type="submit" value="Salvar" /></p>
-    </form>
+    <div class="container">
+      <h1><%= title %></h1>
+      <p>Preencha os dados abaixo para salvar o cliente.</p>
+      <div id="alertCadastro" class="alert alert-danger col-sm-6"><strong>Erro!</strong> O campo "Nome" é obrigatório!</div>
+      <form id="frmCadastro" action="<%= action %>" method="POST" role="form" class="form-horizontal">
+        <div class="mb-3">
+            <label class="form-label">Nome Completo: <input type="text" name="nome" value="<%= doc.nome %>" /></label>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Data de Nascimento: <input type="date" name="nascimento" value="<%= doc.nascimento %>" /></label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Cidade: <input type="text" name="cidade" value="<%= doc.cidade %>" /></label>
+        </div>
+            <label class="form-label">UF: <select name="uf" class="form-control">
+                    <% const s = "selected" %>
+                    <option <% if(doc.uf === "RS") { %><%= s %><% } %>>RS</option>
+                    <option <% if(doc.uf === "SC") { %><%= s %><% } %>>SC</option>
+                    <option <% if(doc.uf === "PR") { %><%= s %><% } %>>PR</option>
+                    <option <% if(doc.uf === "OUTRO") { %><%= s %><% } %>>OUTRO</option>
+                </select></label>
+        </div>
+        <div class="mb-3">
+            <a href="/" class="btn btn-default">Cancelar</a> | <input type="submit" value="Salvar" class="btn btn-primary" />
+        </div>
+      </form>
+    </div>
   </body>
 </html>
