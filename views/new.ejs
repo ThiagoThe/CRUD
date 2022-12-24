@@ -11,18 +11,19 @@
     <div class="container">
       <h1><%= title %></h1>
       <p>Preencha os dados abaixo para salvar o cliente.</p>
-      <div id="alertCadastro" class="alert alert-danger col-sm-6"><strong>Erro!</strong> O campo "Nome" é obrigatório!</div>
-      <form id="frmCadastro" action="<%= action %>" method="POST" role="form" class="form-horizontal">
+      <div id="alertCadastro" class="alert alert-danger col-sm-6" nome="alertCadastro"><strong>Erro!</strong> O campo "Nome" é obrigatório!</div>
+      <form id="frmCadastro" action="<%= action %>" nome="frmCadastro" method="POST" role="form" class="form-horizontal">
         <div class="mb-3">
             <label class="form-label">Nome Completo: <input type="text" name="nome" value="<%= doc.nome %>" /></label>
         </div>
         <div class="mb-3">
             <label class="form-label">Data de Nascimento: <input type="date" name="nascimento" value="<%= doc.nascimento %>" /></label>
         </div>
-        <div class="mb-3">
+        <div class="mb-3" aria-label="default input example">
           <label class="form-label">Cidade: <input type="text" name="cidade" value="<%= doc.cidade %>" /></label>
         </div>
-            <label class="form-label">UF: <select name="uf" class="form-control">
+        <div class="mb-3" aria-label="default input example">
+            <label class="form-label">UF: <select name="uf" class="form-select">
                     <% const s = "selected" %>
                     <option <% if(doc.uf === "RS") { %><%= s %><% } %>>RS</option>
                     <option <% if(doc.uf === "SC") { %><%= s %><% } %>>SC</option>
@@ -35,5 +36,7 @@
         </div>
       </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUts-S3wqzfto5wAAmdvj+osOnFyQFpp4U-a3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="/public/js/scripts-new.js"></script>
   </body>
 </html>

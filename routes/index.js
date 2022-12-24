@@ -41,9 +41,10 @@ router.get("/delete/:id", async function (req, res) {
 /* POST new page. --recebe os posts vindos no form da pag new.ejs-- */
 router.post("/new", async function (req, res) {
   const nome = req.body.nome;
-  const idade = parseInt(req.body.idade);
+  const nascimento = req.body.nascimento;
+  const cidade = req.body.cidade;
   const uf = req.body.uf;
-  await db.insert({ nome, idade, uf });
+  await db.insert({ nome, nascimento, cidade, uf });
   res.redirect("/?new=true");
 });
 
@@ -51,9 +52,10 @@ router.post("/new", async function (req, res) {
 router.post("/edit/:id", async function (req, res) {
   const id = req.params.id;
   const nome = req.body.nome;
-  const idade = parseInt(req.body.idade);
+  const nascimento = req.body.nascimento;
+  const cidade = req.body.cidade;
   const uf = req.body.uf;
-  await db.update(id, { nome, idade, uf });
+  await db.update(id, { nome, nascimento, cidade, uf });
   res.redirect("/?edit=true");
 });
 
